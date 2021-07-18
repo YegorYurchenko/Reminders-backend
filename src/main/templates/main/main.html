@@ -1,0 +1,231 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+Reminders
+{% endblock %}
+
+{% block content %}
+    <div class="page">
+        <div class="page__content">
+            <header class="header js-header">
+                <div class="header__inner">
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <span class="header__logo-text">Reminders</span>
+                        </li>
+                        <li class="header__item">
+                            <button class="header__btn js-header-add-new-item"></button>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <main class="main">
+                <div class="reminders js-reminders" data-url="data/GET_REMINDERS_LIST_SUCCESS.json" data-method="get">
+                    <div class="reminders__inner js-reminders-inner scrollable"
+                        data-remove-url="data/GET_REMOVE_REMIND_SUCCESS.json" data-remove-method="get"></div>
+                </div>
+            </main>
+            <div class="new-remind-item js-new-remind-item">
+                <form class="new-remind-item__form js-new-remind-item-form" data-id="" data-year="" data-month=""
+                    data-day="" data-hour="" data-minute="" data-url="data/GET_NEW_REMINDER_ITEM_SUCCESS.json"
+                    data-method="get" data-edit-url="data/GET_EDIT_REMIND_SUCCESS.json" data-edit-method="get">
+                    <button class="new-remind-item__close-btn js-close-btn" type="button">
+                        <svg class="new-remind-item__close-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 32.526 32.526">
+                            <polygon
+                                points="32.526,2.828 29.698,0 16.263,13.435 2.828,0 0,2.828 13.435,16.263 0,29.698 2.828,32.526 16.263,19.091 29.698,32.526 32.526,29.698 19.091,16.263 " />
+                        </svg>
+                    </button>
+                    <span class="new-remind-item__error js-new-remind-item-error">*You've chosen the past time</span>
+                    <div class="new-remind-item__form-inner js-new-remind-item-form">
+                        <input class="new-remind-item__title js-new-remind-item-title" type="text"
+                            placeholder="Remind text">
+                    </div>
+                </form>
+                <div class="select-date js-select-date">
+                    <form class="select-date__form">
+                        <button class="select-date__close-btn js-date-close-btn" type="button">
+                            <svg class="select-date__close-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 32.526 32.526">
+                                <polygon
+                                    points="32.526,2.828 29.698,0 16.263,13.435 2.828,0 0,2.828 13.435,16.263 0,29.698 2.828,32.526 16.263,19.091 29.698,32.526 32.526,29.698 19.091,16.263 " />
+                            </svg>
+                        </button>
+                        <div class="select-date__form-inner">
+                            <div class="select-date__title">
+                                <span class="select-date__title-text">
+                                    Select date
+                                </span>
+                            </div>
+                            <div class="select-date__main-wrapper">
+                                <div class="select-date__main">
+                                    <div class="select-date__select-month-year">
+                                        <div class="select-date__select-month js-select-month">
+                                            <button
+                                                class="select-date__select-month-btn-decrease select-date__select-btn js-month-decrease-btn"
+                                                type="button"></button>
+                                            <span class="select-date__select-month-text js-select-month-value"
+                                                data-month="06">
+                                                July
+                                            </span>
+                                            <button
+                                                class="select-date__select-month-btn-increase select-date__select-btn js-month-increase-btn"
+                                                type="button"></button>
+                                        </div>
+                                        <div class="select-date__select-year js-select-year">
+                                            <button
+                                                class="select-date__select-year-btn-decrease select-date__select-btn js-year-decrease-btn"
+                                                type="button"></button>
+                                            <span class="select-date__select-year-text js-select-year-value"
+                                                data-year="2021">
+                                                2021
+                                            </span>
+                                            <button
+                                                class="select-date__select-year-btn-increase select-date__select-btn js-year-increase-btn"
+                                                type="button"></button>
+                                        </div>
+                                    </div>
+                                    <div class="select-date__select-day">
+                                        <ul class="select-date__select-day-list js-select-day-list" data-day="">
+                                        </ul>
+                                    </div>
+                                    <button class="select-date__submit js-select-date-submit" type="button">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="select-time js-select-time">
+                    <form class="select-time__form">
+                        <button class="select-time__close-btn js-time-close-btn" type="button">
+                            <svg class="select-time__close-svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 32.526 32.526">
+                                <polygon
+                                    points="32.526,2.828 29.698,0 16.263,13.435 2.828,0 0,2.828 13.435,16.263 0,29.698 2.828,32.526 16.263,19.091 29.698,32.526 32.526,29.698 19.091,16.263 " />
+                            </svg>
+                        </button>
+                        <div class="select-time__form-inner">
+                            <div class="select-time__title">
+                                <span class="select-time__title-text">
+                                    Select time
+                                </span>
+                            </div>
+                            <div class="select-time__main-wrapper">
+                                <div class="select-time__main">
+                                    <div class="select-time__select-hour-wrapper">
+                                        <div class="select-time__select-hour js-select-hour">
+                                            <button
+                                                class="select-time__select-hour-btn-decrease select-time__select-btn js-hour-decrease-btn"
+                                                type="button"></button>
+                                            <span class="select-time__select-hour-text js-select-hour-value" data-hour="12">
+                                                12
+                                            </span>
+                                            <button
+                                                class="select-time__select-hour-btn-increase select-time__select-btn js-hour-increase-btn"
+                                                type="button"></button>
+                                        </div>
+                                        <span class="select-time__select-hour-static-text">hours</span>
+                                    </div>
+                                    <div class="select-time__select-minutes-wrapper">
+                                        <div class="select-time__select-minute js-select-minute">
+                                            <button
+                                                class="select-time__select-minute-btn-decrease select-time__select-btn js-minute-decrease-btn"
+                                                type="button"></button>
+                                            <span class="select-time__select-minute-text js-select-minute-value"
+                                                data-minute="30">
+                                                30
+                                            </span>
+                                            <button
+                                                class="select-time__select-minute-btn-increase select-time__select-btn js-minute-increase-btn"
+                                                type="button"></button>
+                                        </div>
+                                        <span class="select-time__select-minute-static-text">minutes</span>
+                                    </div>
+                                    <button class="select-time__submit js-select-time-submit" type="button">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="reminders-item-template" type="text/template">
+        <% if (title) { %> 
+            <div class="reminders__item" id="<%-id %>" data-date-and-time="<%- dateAndTime %>">
+                <div class="reminders__item-content">
+                    <div class="reminders__item-title js-remind-title"><%= title %></div>
+        <% } %>
+                    <div class="reminders__item-main-wrapper">
+                        <div class="reminders__item-main <% if (!title) { %>js-new-item-block<% } %>">
+                            <% if (title) { %> 
+                                <div class="reminders__item-date">
+                            <% } else { %>
+                                <button class="reminders__item-date reminders__button js-new-item-date-btn" type="button">
+                            <% } %>
+                                    <svg class="reminders__calendar-svg reminders__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        width="36.447px" height="36.447px" viewBox="0 0 36.447 36.447" style="enable-background:new 0 0 36.447 36.447;"
+                                        xml:space="preserve">
+                                        <g><g><path d="M30.224,3.948h-1.098V2.75c0-1.517-1.197-2.75-2.67-2.75c-1.474,0-2.67,1.233-2.67,2.75v1.197h-2.74V2.75
+                                                    c0-1.517-1.197-2.75-2.67-2.75c-1.473,0-2.67,1.233-2.67,2.75v1.197h-2.74V2.75c0-1.517-1.197-2.75-2.67-2.75
+                                                    c-1.473,0-2.67,1.233-2.67,2.75v1.197H6.224c-2.343,0-4.25,1.907-4.25,4.25v24c0,2.343,1.907,4.25,4.25,4.25h24
+                                                    c2.344,0,4.25-1.907,4.25-4.25v-24C34.474,5.855,32.567,3.948,30.224,3.948z M25.286,2.75c0-0.689,0.525-1.25,1.17-1.25
+                                                    c0.646,0,1.17,0.561,1.17,1.25v4.896c0,0.689-0.524,1.25-1.17,1.25c-0.645,0-1.17-0.561-1.17-1.25V2.75z M17.206,2.75
+                                                    c0-0.689,0.525-1.25,1.17-1.25s1.17,0.561,1.17,1.25v4.896c0,0.689-0.525,1.25-1.17,1.25s-1.17-0.561-1.17-1.25V2.75z M9.125,2.75
+                                                    c0-0.689,0.525-1.25,1.17-1.25s1.17,0.561,1.17,1.25v4.896c0,0.689-0.525,1.25-1.17,1.25s-1.17-0.561-1.17-1.25V2.75z
+                                                    M31.974,32.198c0,0.965-0.785,1.75-1.75,1.75h-24c-0.965,0-1.75-0.785-1.75-1.75v-22h27.5V32.198z"/>
+                                                <rect x="6.724" y="14.626" width="4.595" height="4.089"/>
+                                        </g></g>
+                                    </svg>
+                                    <span class="reminders__item-date-text js-new-item-date-text"><%- date %></span>
+                            <% if (title) { %> 
+                                </div>
+                            <% } else { %>
+                                </button>
+                            <% } %>
+    
+                            <span class="reminders__item-content-separator">|</span>
+    
+                            <% if (title) { %> 
+                                <div class="reminders__item-time">
+                            <% } else { %>
+                                <button class="reminders__item-time reminders__button js-new-item-time-btn" type="button">
+                            <% } %>
+                                    <svg class="reminders__time-svg reminders__svg" version="1.1" id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                    <g><g>
+                                        <path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978
+                                            c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952
+                                            C357.766,320.208,355.981,307.775,347.216,301.211z"/>
+                                    </g></g>
+                                    <g><g>
+                                        <path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341
+                                            c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341
+                                            S375.275,472.341,256,472.341z"/>
+                                    </g></g>
+                                    </svg>
+                                    <span class="reminders__item-time-text js-new-item-time-text"><%- time %></span>
+                            <% if (title) { %> 
+                                </div>
+                            <% } else { %>
+                                </button>
+                            <% } %>
+                        </div>
+                        <% if (!title) { %>
+                            <button class="reminders__new-item-btn-submit js-new-remind-item-submit" type="button">ADD</button>
+                            <button class="reminders__new-item-btn-submit js-new-remind-item-save is-hidden" type="button">SAVE</button>
+                        <% } %>
+                    </div>
+        <% if (title) { %> 
+                </div>
+    
+                <button class="reminders__item-button js-remind-actions-btn" type="button"></button>
+                <div class="reminders__actions">
+                    <button class="reminders__actions-btn reminders__actions-btn-edit js-remind-edit" type="button">Edit</button>
+                    <button class="reminders__actions-btn reminders__actions-btn-remove js-remind-remove" type="button">Remove</button>
+                </div>
+            </div>
+        <% } %>
+    </script>
+{% endblock %}
