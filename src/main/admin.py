@@ -1,3 +1,6 @@
-from django.contrib import admin
+""" Admin """
 
-# Register your models here.
+from django.contrib import admin
+from .models import Reminders
+
+admin.site.register(Reminders)
