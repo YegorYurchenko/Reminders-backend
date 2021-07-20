@@ -6,8 +6,7 @@
 
 При работе использовался [Python](https://www.python.org/) версии [3.9.5](https://www.python.org/downloads/release/python-395/) и [Django](https://www.djangoproject.com/) версии [3.2.5](https://docs.djangoproject.com/en/3.2/releases/3.2.5/).
 
-Ссылка на репозиторий Frontend - https://github.com/YegorYurchenko/Reminders
-В ветке `task-backend` лежит актуальная версия frontend для backend (WebSocket)
+Ссылка на репозиторий Frontend - https://github.com/YegorYurchenko/Reminders (в ветке `task-backend` лежит актуальная версия frontend для backend с реализацией через WebSocket)
 
 ## Установка
 
